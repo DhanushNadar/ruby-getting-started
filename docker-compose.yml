@@ -11,7 +11,7 @@ services:
       - ruby-getting-started_mynetwork
 
   web:
-    image: dhanushnadar/ruby-app:1.0.19
+    image: dhanushnadar/ruby-app:1.0.20
     command: bash /app/init-db.sh
     depends_on:
       - postgresql

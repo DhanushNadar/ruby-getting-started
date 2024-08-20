@@ -1,5 +1,5 @@
 
-dhanushnadar/ruby-app:1.0.19 (debian 12.6)
+dhanushnadar/ruby-app:1.0.20 (debian 12.6)
 ==========================================
 Total: 802 (UNKNOWN: 1, LOW: 253, MEDIUM: 488, HIGH: 57, CRITICAL: 3)
 
