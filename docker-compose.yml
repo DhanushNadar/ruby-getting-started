@@ -1,0 +1,30 @@
+version: "3"
+services:
+  postgresql:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    networks:
+      - ruby-getting-started_mynetwork
+
+  web:
+    image: dhanushnadar/ruby-app:v3
+    command: bash /app/init-db.sh
+    depends_on:
+      - postgresql
+    ports:
+      - "3000:3000"
+    networks:
+      - ruby-getting-started_mynetwork
+    environment:
+      POSTGRES_HOST: postgresql
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: admin
+
+networks:
+  ruby-getting-started_mynetwork:
+#    external: true

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+DB_USER="${USER}"
+
+
+# Create the role and database if they don't exist
+psql -h db -U postgres -c "CREATE ROLE $DB_USER WITH LOGIN CREATEDB PASSWORD 'admin';" || true
+psql -h db -U "$DB_USER" -c "CREATE DATABASE ruby_getting_started_development;" || true
+
+# Run migrations
+bundle exec rails db:create
+bundle exec rails db:migrate
+
+# Start the Rails server
+exec bundle exec rails server --binding 0.0.0.0
